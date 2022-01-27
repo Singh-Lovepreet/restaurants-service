@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: "3"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    entrypoint: ["/bin/bash", "./entrypoint.sh"]
+    environment:
+      DATABASE_URL: "postgres://test:test123@postgres:5432/restaurants_dev"
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app/
+      - /app/node_modules
+
+  postgres:
+    image: postgres:10.4
+    ports:
+      - "5438:5432"
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_DB=restaurants_dev
+      - POSTGRES_PASSWORD=test123
+

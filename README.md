@@ -21,8 +21,10 @@ The default Docker `CMD` is `npm start`, [./docker-compose.yaml](./docker-compos
 ## Database setup + management
 
 `npm run migrate up` will run the migrations this will be automate run with docker.
-`npm run dump-restuarents-data` will dump restuarants data in DB
-`npm run dump-user-data` will dump user data in DB 
+
+`npm run dump-restuarents-data` will dump restuarants data in DB.
+
+`npm run dump-user-data` will dump user data in DB .
 
 Postgres is exposed on port `5438`. The connection string is `postgres://user:pass@localhost:5438/db` (username, password and database name are defined in [./docker-compose.yaml](./docker-compose.yaml)).
 
@@ -49,10 +51,15 @@ Let's Explore its functionaties
 
 1. Search for restaurants or dishes by name, ranked by relevance to search term
 
+```sh
  GET API: http://localhost:3000/api/restaurant/search?searchText=Fried Oysters
+```
 
+```sh
  Input params : {searchText:""}
+```
 
+```sh
  Response Sample:- {
     "data": [
         {
@@ -73,11 +80,15 @@ Let's Explore its functionaties
         }
     ]
  }
+ ```
 
  2. List top y restaurants that have more or less than x number of dishes within a price range
 
+```sh
  GET API: http://localhost:3000/api/restaurant/listTopRestaurants?top=10&dishesQty=14&startRange=10&endRange=2000
+```
 
+```sh
  Inpute Params : 
  {
     startRange: type number
@@ -85,7 +96,8 @@ Let's Explore its functionaties
     dishesQty:type number
     top:type number
  }
-
+ ```
+```sh
  Sample Response:-
 
  {
@@ -102,18 +114,22 @@ Let's Explore its functionaties
         }
     ]
 }
-
+```
 
 3. List all restaurants that are open at a certain datetime
 
+```sh
 GET API: http://localhost:3000/api/restaurant/listRestaurants?dateTime=2021-01-26T14:30:00
+```
 
+```sh
 Inpute Params: -
 
 {
     dateTime: YYYY-MM-DDTHH:mm:ss
 }
-
+```
+```sh
 Sample Reponse:-
 
 {
@@ -130,19 +146,23 @@ Sample Reponse:-
         }
     ]
 }
-
+```
 
 4. Process a user purchasing a dish from a restaurant, handling all relevant data changes in an atomic transaction
 
+```sh
 POST API:-http://localhost:3000/api/restaurant/purchaseDish
+```
 
+```sh
 Input Payload :-
 {
     "dish_id": type uuuid eg: 168e5e1c-9c51-42ce-af3f-36b645a43284
     "user_id": Type integer eg:113
     "restaurant_id": type uuuid eg:3f741fff-e31a-41f0-9f3d-1994988296ac
 }
-
+```
+```sh
 Sample Reponse:
 
 {
@@ -153,3 +173,4 @@ Sample Reponse:
         "restaurant_name": "'Ulu Ocean Grill and Sushi Lounge"
     }
 }
+```

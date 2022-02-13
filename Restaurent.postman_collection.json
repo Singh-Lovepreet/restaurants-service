@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "67360740-94d0-4421-80db-2a8930b8bbe1",
+		"_postman_id": "00200a46-99ee-42af-ad21-c24716a24f6c",
 		"name": "Restaurent",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,23 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/restaurant/search?searchText=BD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"restaurant",
+						"search"
+					],
+					"query": [
+						{
+							"key": "searchText",
+							"value": "BD"
+						}
+					]
 				}
 			},
 			"response": []
@@ -22,7 +38,35 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/restaurant/listTopRestaurants?top=&dishesQty=14&startRange=10&endRange=2000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"restaurant",
+						"listTopRestaurants"
+					],
+					"query": [
+						{
+							"key": "top",
+							"value": ""
+						},
+						{
+							"key": "dishesQty",
+							"value": "14"
+						},
+						{
+							"key": "startRange",
+							"value": "10"
+						},
+						{
+							"key": "endRange",
+							"value": "2000"
+						}
+					]
 				}
 			},
 			"response": []
@@ -33,7 +77,23 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/restaurant/listRestaurants?dateTime=2022-02-12T14:30:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"restaurant",
+						"listRestaurants"
+					],
+					"query": [
+						{
+							"key": "dateTime",
+							"value": "2022-02-12T14:30:00"
+						}
+					]
 				}
 			},
 			"response": []
@@ -41,10 +101,29 @@
 		{
 			"name": "Purchase Dish",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dish_id\": \"2a2c08d3-406d-48b8-bc8f-fb2755623047\",\n    \"user_id\": 2,\n    \"restaurant_id\": \"3cc3c385-b90a-4a49-b476-7844cad16999\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/restaurant/purchaseDish",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"restaurant",
+						"purchaseDish"
+					]
 				}
 			},
 			"response": []

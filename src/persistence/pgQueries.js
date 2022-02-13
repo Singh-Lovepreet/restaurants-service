@@ -49,8 +49,11 @@ class PgQueries {
         close_time::time >$2
         and day=$1
         )
-        select er.*,r.restaurant_name,r.cash_balance from extra_restaurants er
+        select er.*,r.restaurant_name,json_agg(roh.*) as restaurant_timings from extra_restaurants er
         join public.restaurants r on er.restaurant_id=r.id
+        join public.restaurants_opening_hours as roh on roh.restaurant_id =r.id 
+        group  by r.restaurant_name,er.restaurant_id
+
         `
   }
 
@@ -60,9 +63,12 @@ class PgQueries {
       where  price>=$1 and price<=$2 
       group  by restaurant_id
       )
-      select ar.*,r.restaurant_name from aggRest ar
+      select ar.*,r.restaurant_name,json_agg(roh.*) as restaurant_timings from aggRest ar
       join public.restaurants r on r.id=ar.restaurant_id
-      where ar.dishQty<$3 or ar.dishQty<$3 limit $4 offset 0`
+      join restaurants_opening_hours  as roh  on roh.restaurant_id=r.id 
+      where ar.dishQty<$3 or ar.dishQty<$3
+      group by ar.restaurant_id, ar.dishQty,r.restaurant_name
+      limit $4 offset 0`
   }
 
   getDishDetailQuery() {

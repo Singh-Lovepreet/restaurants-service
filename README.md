@@ -37,7 +37,7 @@ psql postgres://user:pass@localhost:5438/db
 ## Express API setup
 
 
-Import the Postman Collection [./Restaurent.postman_collection.json] in you postman
+Import the Postman Collection [./Restaurent.postman_collection.json](./Restaurent.postman_collection.json) in you postman
 
 The Express API is located in [./src/api](./src/api).
 

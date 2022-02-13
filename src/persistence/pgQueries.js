@@ -49,11 +49,9 @@ class PgQueries {
         close_time::time >$2
         and day=$1
         )
-        select er.*,r.restaurant_name,json_agg(roh.*) as restaurant_timings from extra_restaurants er
+        select er.*,r.restaurant_name,roh.day,roh.open_time ,roh .close_time  from extra_restaurants er
         join public.restaurants r on er.restaurant_id=r.id
-        join public.restaurants_opening_hours as roh on roh.restaurant_id =r.id 
-        group  by r.restaurant_name,er.restaurant_id
-
+        join restaurants_opening_hours roh on roh.restaurant_id =r.id and roh."day" =$1
         `
   }
 

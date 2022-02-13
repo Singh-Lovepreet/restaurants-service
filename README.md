@@ -36,6 +36,9 @@ psql postgres://user:pass@localhost:5438/db
 
 ## Express API setup
 
+
+Import the Postman Collection [./Restaurent.postman_collection.json] in you postman
+
 The Express API is located in [./src/api](./src/api).
 
 Applications routes for resources are defined in [./src/api/index.js](./src/api/index.js).
@@ -102,16 +105,53 @@ Let's Explore its functionaties
 
  {
     "data": [
-        {
-            "restaurant_id": "57c0ac19-f2b9-4b82-952a-053f6841bac7",
-            "dishqty": "4",
-            "restaurant_name": "Laundry"
-        },
-        {
-            "restaurant_id": "90d04fc7-5ce7-4fcb-b94d-c9ceabe9a81f",
-            "dishqty": "5",
-            "restaurant_name": "Lox Stock & Bagel"
-        }
+         "restaurant_id": "00188bf7-4e27-4441-9a53-f1c8aef522fb",
+            "dishqty": "6",
+            "restaurant_name": "Citron Bistro",
+            "restaurant_timings": [
+                {
+                    "restaurant_id": "00188bf7-4e27-4441-9a53-f1c8aef522fb",
+                    "day": "Wednesday",
+                    "open_time": "07:15:00",
+                    "close_time": "18:00:00"
+                },
+                {
+                    "restaurant_id": "00188bf7-4e27-4441-9a53-f1c8aef522fb",
+                    "day": "Thursday",
+                    "open_time": "14:15:00",
+                    "close_time": "17:30:00"
+                },
+                {
+                    "restaurant_id": "00188bf7-4e27-4441-9a53-f1c8aef522fb",
+                    "day": "Monday",
+                    "open_time": "13:00:00",
+                    "close_time": "00:30:00"
+                },
+                {
+                    "restaurant_id": "00188bf7-4e27-4441-9a53-f1c8aef522fb",
+                    "day": "Saturday",
+                    "open_time": "13:45:00",
+                    "close_time": "20:45:00"
+                },
+                {
+                    "restaurant_id": "00188bf7-4e27-4441-9a53-f1c8aef522fb",
+                    "day": "Tuesday",
+                    "open_time": "07:15:00",
+                    "close_time": "00:30:00"
+                },
+                {
+                    "restaurant_id": "00188bf7-4e27-4441-9a53-f1c8aef522fb",
+                    "day": "Sunday",
+                    "open_time": "05:45:00",
+                    "close_time": "00:45:00"
+                },
+                {
+                    "restaurant_id": "00188bf7-4e27-4441-9a53-f1c8aef522fb",
+                    "day": "Friday",
+                    "open_time": "13:00:00",
+                    "close_time": "00:30:00"
+                }
+            ]
     ]
 }
 ```
@@ -135,14 +175,18 @@ Sample Reponse:-
 {
     "data": [
         {
-            "restaurant_id": "d3d11c8a-8efc-4925-8fbd-5099e995d87f",
-            "restaurant_name": "024 Grille",
-            "cash_balance": 4882.81
+            "restaurant_id": "e7376a57-a130-43cf-9777-c4196144fd15",
+            "restaurant_name": "Sarabeth's",
+            "day": "Sunday",
+            "open_time": "01:45:00",
+            "close_time": "00:15:00"
         },
         {
-            "restaurant_id": "a3115172-0595-494b-85e6-03a08a715891",
-            "restaurant_name": "100% Mexicano Restaurant",
-            "cash_balance": 1320.19
+            "restaurant_id": "938b4a12-976d-4550-8f32-2f0764b60d4f",
+            "restaurant_name": "Cullen's",
+            "day": "Sunday",
+            "open_time": "01:00:00",
+            "close_time": "00:45:00"
         }
     ]
 }
